@@ -1,0 +1,19 @@
+VENDOR: XYZ Solutions Ltd
+DATE: 2024-05-02
+
+ITEMS:
+1. Website Design & Code - $4,500
+2. Annual Maintenance - $800
+3. Server Config - $200
+
+TOTAL: $5,500 USD
+
+TERMS:
+- 30% advance, 70% post-delivery.
+- Delivery in 6 weeks.
+- 6 months support included.
+
+NOTES:
+Budget friendly option.
+We use freelancers for some parts.
+Office hours support only.

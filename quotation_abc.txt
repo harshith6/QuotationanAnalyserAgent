@@ -1,0 +1,18 @@
+VENDOR: ABC Corp
+DATE: 2024-05-01
+
+ITEMS:
+1. Web Development Service - $5,000
+2. Maintenance (1 year) - $1,200
+3. Hosting Setup - Free
+
+TOTAL: $6,200 USD
+
+TERMS:
+- 50% upfront, 50% on completion.
+- Delivery in 4 weeks.
+- 1 year free bug fixing.
+
+NOTES:
+We are a premium agency with 10 years of experience.
+Our team is available 24/7.
