@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReportView = ({ report }) => {
+const ReportView = ({ report, onBack }) => {
   const { analyses, recommendation, reasoning } = report;
 
   return (
@@ -9,38 +9,50 @@ const ReportView = ({ report }) => {
       
       <div className="cards-grid">
         {analyses.map((item, idx) => (
-          <div key={idx} className="analysis-card">
-            <h3>{item.vendor_name}</h3>
-            <div className="price-tag">
-              {item.currency} {item.total_price.toLocaleString()}
+          <div key={idx} className="analysis-card" style={{ animationDelay: `${idx * 100}ms` }}>
+            <div className="card-header">
+              <h3>{item.vendor_name}</h3>
+              <div className="price-tag">
+                <span className="currency">{item.currency}</span>
+                <span className="amount">{item.total_price.toLocaleString()}</span>
+              </div>
             </div>
             
-            <div className="section">
-              <h4>Pros</h4>
-              <ul>
-                {item.pros.map((pro, i) => <li key={i}>{pro}</li>)}
-              </ul>
-            </div>
-            
-            <div className="section">
-              <h4>Cons</h4>
-              <ul>
-                {item.cons.map((con, i) => <li key={i}>{con}</li>)}
-              </ul>
-            </div>
+            <div className="card-body">
+              <div className="section pros">
+                <div className="section-title">Pros</div>
+                <ul>
+                  {item.pros.map((pro, i) => <li key={i}>{pro}</li>)}
+                </ul>
+              </div>
+              
+              <div className="section cons">
+                <div className="section-title">Cons</div>
+                <ul>
+                  {item.cons.map((con, i) => <li key={i}>{con}</li>)}
+                </ul>
+              </div>
 
-            <p className="summary">{item.summary}</p>
+              <div className="section summary">
+                <div className="section-title">Summary</div>
+                <p>{item.summary}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="recommendation-box">
-        <h3>AI Recommendation</h3>
-        <p className="highlight">{recommendation}</p>
-        <p className="reasoning">{reasoning}</p>
+        <div className="recommendation-content">
+          <div className="rec-label">Recommendation</div>
+          <p className="highlight">{recommendation}</p>
+          <p className="reasoning">{reasoning}</p>
+        </div>
       </div>
 
-      <button className="reset-btn" onClick={() => window.location.reload()}>Analyze New Files</button>
+      <button className="reset-btn" onClick={onBack}>
+        Adjust Files / New Analysis
+      </button>
     </div>
   );
 };

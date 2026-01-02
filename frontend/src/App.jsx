@@ -5,21 +5,27 @@ import ReportView from './components/ReportView';
 import { analyzeFiles } from './api';
 
 function App() {
+  const [files, setFiles] = useState([]);
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleAnalyze = async (files) => {
+  const handleAnalyze = async (filesToAnalyze) => {
     setLoading(true);
     setError('');
     try {
-      const result = await analyzeFiles(files);
+      const result = await analyzeFiles(filesToAnalyze);
       setReport(result);
     } catch (err) {
       setError(err.message || 'An error occurred during analysis');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleBack = () => {
+    setReport(null);
+    setError('');
   };
 
   return (
@@ -33,9 +39,14 @@ function App() {
         {error && <div className="error-banner">{error}</div>}
         
         {report ? (
-          <ReportView report={report} />
+          <ReportView report={report} onBack={handleBack} />
         ) : (
-          <UploadSection onAnalyze={handleAnalyze} loading={loading} />
+          <UploadSection 
+            files={files} 
+            setFiles={setFiles} 
+            onAnalyze={handleAnalyze} 
+            loading={loading} 
+          />
         )}
       </main>
     </div>

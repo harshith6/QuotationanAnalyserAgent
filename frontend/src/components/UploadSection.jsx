@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-const UploadSection = ({ onAnalyze, loading }) => {
-  const [files, setFiles] = useState([]);
+const UploadSection = ({ files, setFiles, onAnalyze, loading }) => {
   const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
